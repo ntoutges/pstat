@@ -1,0 +1,230 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+  background-color: cornsilk;
+}
+
+#container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+#input {
+  width: 50vw;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+#output {
+  flex: 1 1 0;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#input-text {
+  flex: 1 1 0; /* take up full width of parent */
+  resize: none;
+
+  padding: 2px;
+  border: 0px;
+}
+
+#separator {
+  width: 10px;
+  background: grey;
+}
+
+#separator:hover {
+  cursor: ew-resize;
+}
+
+#input-tab-holder {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.input-tabs {
+  padding: 5px;
+  user-select: none;
+  background: #9d9d9d;
+}
+
+.input-tabs:hover {
+  cursor: pointer;
+}
+
+.input-tabs.selected {
+  background: #c8c8c8;
+}
+
+#input > :not(:is(#input-tab-holder,#input-warning,.selected)) {
+  display: none;
+}
+
+#input-warning {
+  padding: 5px;
+  background: #ffc4c4;
+  color: red;
+  border-top: solid #c15b5b 2px;
+  text-align: center;
+  font-style: italic;
+}
+
+#input-warning:empty {
+  display: none;
+}
+
+#input-warning::before {
+  content: 'Warning: ';
+  font-style: normal;
+}
+
+#input-parsed {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sections {
+  font-family:'Times New Roman', Times, serif;
+  padding: 8px;
+  user-select: none;
+}
+
+.sections:hover {
+  cursor: pointer;
+}
+
+.sections:nth-child(even) {
+  background: #bdbdbd;
+}
+
+.sections:nth-child(odd) {
+  background: #cdcdcd;
+}
+
+.sections.selected {
+  background: lightgreen;
+}
+
+#input-parsed:empty::before {
+  content: 'No Data.';
+  text-align: center;
+}
+
+#graph-viewer {
+  display: flex;
+  flex-direction: row;
+
+  overflow-x: auto;
+  height: 50vh;
+}
+
+.bars {
+  min-width: 6px;
+}
+
+.bars:nth-child(odd) {
+  background: #a3a3a3;
+}
+
+.bars:nth-child(even) {
+  background: #bbbbbb;
+}
+
+.bars:hover {
+  background: yellow;
+  cursor: pointer;
+}
+
+.bars:hover > * {
+  background: grey;
+}
+
+.bars.selected {
+  min-width: 20px;
+  background: #dcffd7;
+}
+
+.bars > div {
+  background: black;
+  width: calc(90%);
+  
+  position: relative;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+
+  min-height: 5px;
+
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+#prop-viewer {
+  display: grid;
+  grid-template-columns: min-content auto min-content;
+  font-family: math;
+  overflow-y: auto;
+}
+
+.prop-pairs {
+  display: contents;
+}
+
+.prop-pairs > * {
+  padding: 5px;
+  user-select: none;
+}
+
+.prop-pairs > .vals {
+  word-break: break-all;
+}
+
+.prop-pairs > .vals:empty::before {
+  content: '<empty>';
+  font-style: italic;
+  color: #898989;
+}
+
+.prop-pairs > .copy {
+  width: 0.5em;
+  background-image: url(./copy.png) !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
+.prop-pairs > .copy:hover {
+  background-color: #b1ffde;
+}
+
+.prop-pairs:hover > * {
+  cursor: pointer;
+  filter: brightness(1.2);
+}
+
+.prop-pairs:nth-child(even) > * {
+  background: #d5d5d5;
+}
+
+.prop-pairs:nth-child(odd) > * {
+  background: #e1e1e1;
+}
+
+#height-prop-select {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+#height-prop-select:empty {
+  display: none;
+}
